@@ -23,14 +23,21 @@ For orders:  [('apples', 3.0)] best shop is shop2
 from __future__ import print_function
 import shop
 
-
 def shopSmart(orderList, fruitShops):
     """
-        orderList: List of (fruit, numPound) tuples
-        fruitShops: List of FruitShops
+    orderList: List of (fruit, numPound) tuples
+    fruitShops: List of FruitShops
     """
-    "*** YOUR CODE HERE ***"
-    return None
+    best_shop = None
+    min_cost = float('inf')  # Initialize min_cost with infinity
+
+    for shop in fruitShops:
+        total_cost = shop.getPriceOfOrder(orderList)
+        if total_cost < min_cost:
+            min_cost = total_cost
+            best_shop = shop
+
+    return best_shop
 
 
 if __name__ == '__main__':
@@ -46,3 +53,4 @@ if __name__ == '__main__':
     orders = [('apples', 3.0)]
     print("For orders: ", orders, ", the best shop is",
           shopSmart(orders, shops).getName())
+
